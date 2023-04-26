@@ -19,26 +19,27 @@
     <a class="nav-link {{ activeNavLink == 'components' ? 'active' }}" href="{{ 'components'|page }}">Components Demo</a>
 </li>
 </li>
-<li class="nav-item">
-    <a class="nav-link {{ activeNavLink == 'login' ? 'active' }}" href="{{ 'login'|page }}">login</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" data-request="onLogout" data-request-data="redirect: '/'">Sign out</a>
-</li>
 
+{% if user %}
 <ul class="nav nav-tabs">
     <li class="nav-item">
-      <h4>t</h4>
+        <link rel="shortcut icon" href="../../assets/images/icons/profile.png">
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Profile</a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Account Setting</a></li>
+        <li><a class="dropdown-item" href="{{ 'login'|page }}">Account Setting</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Logout</a></li>
+        <li><a class="dropdown-item" data-request="onLogout" data-request-data="redirect: '/'">Sign out</a></li>
       </ul>
     </li>
   </ul>
+{% else %}  
+    <li class="nav-item">
+        <a class="nav-link {{ activeNavLink == 'login' ? 'active' }}" href="{{ 'login'|page }}">Conexion</a>
+    </li>
+{% endif %} 
+
 {% if sitePicker.isEnabled %}
     <li class="nav-item dropdown">
         <a class="btn btn-outline-light dropdown-toggle" href="{{ ''|page }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
