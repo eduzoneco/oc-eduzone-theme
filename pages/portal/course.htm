@@ -2,15 +2,25 @@ url = "/course/:course_id"
 layout = "portal"
 title = "course title"
 
-[LessonList]
+[ActivityDetail]
+[ActivityList]
 ==
 function onStart()
 {
     $this['paramCourseId'] = $this->param('course_id');
 }
 ==
+<div class="d-flex px-5">
+    <div class="d-flex w-75 justify-content-center"">
+        {% component 'ActivityDetail' courseId=paramCourseId %}
+    </div>
+    <div class="w-25">
+        {% component 'ActivityList' courseId=paramCourseId %}
+    </div>
+</div>
 
-    {% component 'LessonList' courseId=paramCourseId %}
+
+
 
 
 
