@@ -2,15 +2,19 @@ url = "/course/:course_id"
 layout = "portal"
 title = "course title"
 
+[LessonList]
 ==
 function onStart()
 {
-    use \eduzoneco\management\models\Course;
-    $courseId = $this->param('course_id');
-    $course = Course::where('id','=',$courseId)->first();
-    $this['course'] = $course;
-
+    $this['paramCourseId'] = $this->param('course_id');
 }
 ==
 
-<h1> bienvenido a {{course.name}} </h1>
+    {% component 'LessonList' courseId=paramCourseId %}
+
+
+
+
+
+
+
